@@ -1,1 +1,2 @@
 2020/12/14 开始编写SCM_Database的pro-alpha版本
+2020/12/14 开始编写SCM_Exception的alpha版本
