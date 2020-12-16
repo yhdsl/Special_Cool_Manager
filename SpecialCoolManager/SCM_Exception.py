@@ -22,3 +22,8 @@ class TableExist(Exception):
 class TableInexist(Exception):
     def __str__(self):
         return Local.GetTranslation('SCM_Database', 'TableInexist').translation
+
+
+class ColumnTableError(Exception):
+    def __str__(self):
+        return Local.GetTranslation('SCM_Database', 'ColumnTableError').translation
