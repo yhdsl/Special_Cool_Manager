@@ -1,4 +1,6 @@
-2020/12/14 开始编写SCM_Database的pro-alpha版本
-2020/12/14 开始编写SCM_Exception的alpha版本
-2020/12/14 开始设计国际化部分
-2020/12/14 发布SCM_Localization的pro-beta版本
+2020/12/14 开始编写SCM_Database的pro-alpha版本-0.1.0
+2020/12/14 开始编写SCM_Exception的alpha版本-0.1.0
+2020/12/15 开始设计国际化部分
+2020/12/15 发布SCM_Localization的pro-beta版本-0.1.0
+2020/12/15 统一版本号编写规范
+2020/12/16 完成SC2020/12/15M_Database部分基本功能的编写
