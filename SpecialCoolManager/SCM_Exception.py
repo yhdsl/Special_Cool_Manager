@@ -27,3 +27,33 @@ class TableInexist(Exception):
 class ColumnTableError(Exception):
     def __str__(self):
         return Local.GetTranslation('SCM_Database', 'ColumnTableError').translation
+
+
+class ColumnInsertMore(Exception):
+    def __str__(self):
+        return Local.GetTranslation('SCM_Database', 'ColumnInsertMore').translation
+
+
+class ColumnInsertLess(Exception):
+    def __str__(self):
+        return Local.GetTranslation('SCM_Database', 'ColumnInsertLess').translation
+
+
+class ColumnUpdateMore(Exception):
+    def __str__(self):
+        return Local.GetTranslation('SCM_Database', 'ColumnUpdateMore').translation
+
+
+class ColumnUpdateLess(Exception):
+    def __str__(self):
+        return Local.GetTranslation('SCM_Database', 'ColumnUpdateLess').translation
+
+
+class ColumnUpdateWhereNull(Exception):
+    def __str__(self):
+        return Local.GetTranslation('SCM_Database', 'ColumnUpdateWhereNull').translation
+
+
+class ColumnDeleteNull(Exception):
+    def __str__(self):
+        return Local.GetTranslation('SCM_Database', 'ColumnDeleteNull').translation
