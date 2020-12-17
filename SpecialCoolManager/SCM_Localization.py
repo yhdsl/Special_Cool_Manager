@@ -13,11 +13,11 @@ LOCAL_LANGUAGE = 'zh-ch'  # TODO(长期) 添加自定义本地语言功能
 class GetTranslation:
     """
     类参数
-    module_name 调用此类的模块名
-    translation_name 翻译的键值
+    module_name -> str 调用此类的模块名
+    translation_name -> str 翻译的键值
 
     类属性
-    translation 翻译文本
+    translation -> str 翻译文本
 
     TODO(未知) 文件和键值不存在错误
     """
