@@ -1,12 +1,13 @@
 """
-内部版本号：0.1.0.alpha
-目前状态：工作中
+**内部版本号**：*0.1.10.alpha*
 
-模块说明：程序所有异常定义
+**目前状态**：*随项目开发进度进行*
+
+**模块说明**：*定义程序所有异常*
 """
 import SCM_Localization as Local
 
-# SCM_Database - 数据库异常
+# SCM_Database - 定义数据库异常
 
 
 class DBError(Exception):

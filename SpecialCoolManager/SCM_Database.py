@@ -1,8 +1,9 @@
 """
-内部版本号：0.1.0.alpha
-目前状态：发布测试版，进行功能更新和bug修复
+**内部版本号**: *0.1.0.alpha*
 
-模块说明：负责软件数据库相关操作
+**目前状态**: *进入alpha版开发，进行功能修复和完成TODO*
+
+**模块说明**: *负责软件数据库相关操作*
 """
 
 import os
@@ -11,46 +12,52 @@ import SCM_Exception
 
 
 class SQLDBMethod:
-    """  # TODO(急迫) 统一文档字符串格式
-    **类属性** \n
-    *database_estorage -> str* 数据库储存文件夹地址，默认为相对文件夹 /Database \n
-    *db_name -> str* 数据库文件名称，不带.db后缀 \n
-    \n
-    **类方法** \n
-    *get_con()* 返回指定数据库的connect类 \n
+    """
+    *类属性:*
+
+    **database_estorage -> str** 数据库储存文件夹地址，默认为相对文件夹 */Database* \n
+    **db_name -> str** 数据库文件名称，不带.db后缀 \n
+
+    *类方法:*
+
+    **get_con()** 返回指定数据库的connect类
     """
 
     def __init__(self):
         self.database_estorage = r'Database'
         self.db_name = ''
 
-    def get_con(self):
+    def get_con(self):  # TODO(长期) 此类可能会触发AttributeError异常
         if not os.path.exists(self.database_estorage):
             os.mkdir(self.database_estorage)
         if self.db_name == '':
-            connect_back = None  # 此条件分支会引发AttributeError异常，请注意捕获
+            connect_back = None
         else:
             connect_back = sqlite3.connect(f'{self.database_estorage}/{self.db_name}.db')
         return connect_back
 
 
-class SQLTableMethod:  # TODO(长期) 此类可能会触发AttributeError异常
+class SQLTableMethod:
     """
-    类的初始化\n
-    get_con -> sqlite.connect 传入指定数据库的connect类\n
-    \n
-    类属性\n
-    table_name -> str 指定的表名\n
-    \n
-    类方法\n
-    con_close() 数据库con的提交和断开连接功能，注意最后必须调用\n
-    table_check() 检查指定的表名是否存在\n
-    table_create(table_format -> str) 创建指定table_format格式的表\n
-    table_create() 删除指定的表\n
-    \n
-    类异常\n
-    SCM_Exception.TableExist\n
-    SCM_Exception.TableInexist\n
+    *初始化:*
+
+    **get_con -> sqlite.connect** 传入指定数据库的connect类
+
+    *类属性:*
+
+    **table_name -> str** 指定的表名
+
+    *类方法:*
+
+    **con_close()** 数据库con的提交和断开连接功能，*注意最后必须调用此方法* \n
+    **table_check()** 检查指定的表名是否存在 \n
+    **table_create(table_format -> str)** 创建指定table_format格式的表 \n
+    **table_create()** 删除指定的表 \n
+
+    *类异常:*
+
+    **SCM_Exception.TableExist**
+    **SCM_Exception.TableInexist**
     """
 
     def __init__(self, get_con):
@@ -93,25 +100,29 @@ class SQLTableMethod:  # TODO(长期) 此类可能会触发AttributeError异常
 
 class SQLColumnMethod:
     """
-    类的初始化\n
-    get_con -> sqlite.connect 传入指定数据库的connect类\n
-    \n
-    类属性\n
-    table_name -> str 指定的表名\n
-    column_name -> tup 指定的列名，传入元组\n
-    sql_where -> str 不带WHERE的SQL的where语句\n
-    \n
-    类方法\n
-    column_insert(column_value -> tup) 在指定列插入传入的column_value数据\n
-    column_update(column_value -> tup) 更新指定列的数据为传入的column_value，WHERE语句强制必须添加\n
-    column_delete() 删除WHERE符合条件的表，WHERE语句强制必须添加\n
-    column_value_get_one(use_where=False) 返回单个搜索结果，use_where用于控制WHERE语句的启用，没有为空列表\n
-    column_value_get_many(size -> int, use_where=False) 返回size个搜索结果，use_where用于控制WHERE语句的启用\n
-    column_value_get_all(use_where=False) 返回所有的搜索结果，use_where用于控制WHERE语句的启用\n
-    \n
-    类异常\n
-    SCM_Exception.ColumnInsertMore
-    SCM_Exception.ColumnInsertLess
+    *初始化:*
+
+    **get_con -> sqlite.connect** 传入指定数据库的connect类
+
+    *类属性:*
+
+    **table_name -> str** 指定的表名 \n
+    **column_name -> tup** 指定的列名，注意传入列名 \n
+    **sql_where -> str** 不带WHERE关键字的where语句 \n
+
+    *类方法:*
+
+    **column_insert(column_value -> tup)** 在指定列插入传入的column_value数据 \n
+    **column_update(column_value -> tup)** 更新指定列的数据为传入的column_value，*WHERE语句强制必须添加* \n
+    **column_delete()** 删除WHERE符合条件的表，*WHERE语句强制必须添加* \n
+    **column_value_get_one(use_where=False)** 返回单个搜索结果，use_where用于控制WHERE语句的启用，没有为空列表 \n
+    **column_value_get_many(size -> int, use_where=False)** 返回size个搜索结果，use_where用于控制WHERE语句的启用 \n
+    **column_value_get_all(use_where=False)** 返回所有的搜索结果，use_where用于控制WHERE语句的启用 \n
+
+    *类异常:*
+
+    **SCM_Exception.ColumnInsertMore**
+    **SCM_Exception.ColumnInsertLess**
     """
 
     def __init__(self, get_con):
@@ -132,7 +143,7 @@ class SQLColumnMethod:
             return True
 
     def _column_name_getin(self):
-        """将以列表格式传入的列名转换为合法的SQL语句"""
+        """将以列表格式传入的列名转换为合法的SQL语句参数"""
         if not self.column_name:  # 缺省时默认为所有的列
             column_name_sqlin = '*'
         else:
